@@ -1,1 +1,35 @@
-
+{
+  "properties": {
+    "displayName": "CostAudit",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "metadata": {
+      "createdBy": "1087ee27-694c-499a-ae0a-b690aff0b141",
+      "createdOn": "2025-03-18T13:18:36.2162773Z",
+      "updatedBy": "1087ee27-694c-499a-ae0a-b690aff0b141",
+      "updatedOn": "2025-03-18T13:49:17.0205979Z"
+    },
+    "version": "1.0.0",
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
+            "equals": "[parameters('Standard_D2ds_v4,'Standard_B2als_v2')"
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    },
+    "versions": [
+      "1.0.0"
+    ]
+  }
+}
